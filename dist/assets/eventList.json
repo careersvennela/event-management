@@ -1,0 +1,44 @@
+[
+    {
+        "_id": "788",
+        "eventImage": "https://www.eventfaqs.com/Uploads/In%20Story%20Images/rad1.jpg",
+        "eventName": "Conference",
+        "eventDate": "30-Sep-2020",
+        "totalSeats": 5
+    },
+    {
+        "_id": "783",
+        "eventImage": "https://www.wheretorome.com/wp-content/uploads/2013/12/business-conference.jpg",
+        "eventName": "Meet up",
+        "eventDate": "21-Dec-2020",
+        "totalSeats": 20
+    },
+    {
+        "_id": "123",
+        "eventImage": "https://www.businesseventscouncil.org.au/images/Cairns_Convention_Centre_Hall_A_Plenary_LR.jpg",
+        "eventName": "Deep Dive",
+        "eventDate": "19-Nov-2020",
+        "totalSeats": 15
+    },
+    {
+        "_id": "658",
+        "eventImage": "https://www.mediacominc.com/wp/wp-content/uploads/2014/03/business-events.jpg",
+        "eventName": "Webinar",
+        "eventDate": "13-Nov-2020",
+        "totalSeats": 10
+    },
+    {
+        "_id": "878",
+        "eventImage": "https://www.harley-davidson.com/content/dam/h-d/images/owners/hog/member-events/hero-member-events.jpg?impolicy=myresize&rw=910",
+        "eventName": "Musicana",
+        "eventDate": "15-Oct-2020",
+        "totalSeats": 10
+    },
+    {
+        "_id": "456",
+        "eventImage": "https://register-for-events.com/wp-content/uploads/2019/09/Event-Company.jpg",
+        "eventName": "Dine and Fine",
+        "eventDate": "23-Oct-2020",
+        "totalSeats": 10
+    }
+]

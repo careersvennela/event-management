@@ -1,0 +1,113 @@
+<div class="m-t-35">
+  <h2 class="center-text">{{eventDetails.eventName}}</h2>
+  <h4 class="center-text">Number of available seats: {{eventDetails.availableSeats}}</h4>
+
+</div>
+<div class="card m-r-20 m-l-20 m-t-35">
+  <div class="card-body m-r-20 m-l-20">
+    <div class="row">
+      <div class="col-sm-3">
+        <img src="{{eventDetails.eventImage}}" width="100%">
+      </div>
+      <div class="col-sm-9" [formGroup]="bookEventForm">
+
+        <div>
+          <label>Name:</label>
+          <input class="form-control" formControlName="userName" placeholder="Enter your name">
+          <small class="form-text text-muted invalid-data"
+            *ngIf="f['userName'].required && (f['userName'].dirty || f['userName'].touched)"
+            class="invalid-data">
+            Please enter your name</small> 
+            <small class="form-text text-muted invalid-data"
+            *ngIf="f['userName'].invalid  && (f['userName'].dirty || f['userName'].touched)">
+            Only letters and spaces are allowed</small>
+        </div>
+
+        <div>
+          <label>Email:</label>
+          <input class="form-control" formControlName="email" placeholder="Enter email">
+            <small class="form-text text-muted invalid-data"
+            *ngIf="f['email'].required && (f['email'].dirty || f['email'].touched)"
+            class="invalid-data">
+            Please enter your email</small> 
+            <small class="form-text text-muted invalid-data"
+            *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)">
+            Invalid email</small>
+
+        </div>
+
+        <div>
+          <label>Phone No.:</label>
+          <input class="form-control" formControlName="phoneNumber" placeholder="Enter phone number">
+          <small class="form-text text-muted invalid-data"
+            *ngIf="f['phoneNumber'].required && (f['phoneNumber'].dirty || f['phoneNumber'].touched)"
+            class="invalid-data">
+            Please enter your phone number</small> 
+            <small class="form-text text-muted invalid-data"
+            *ngIf="f['phoneNumber'].invalid && (f['phoneNumber'].dirty || f['phoneNumber'].touched)">
+            Invalid phone number</small>
+        </div>
+
+        <div>
+          <label>No. of seats:</label>
+          <select class="form-control" formControlName="noOfSeats" placeholder="Select No. of seats"
+            (change)="noOfSeats(bookEventForm.value.noOfSeats)">
+            <option value=''>Select seats</option>
+            <option value='1'>1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+            <option value='6'>6</option>
+          </select>
+          <small class="form-text text-muted invalid-data"
+          *ngIf="f['noOfSeats'].invalid && (f['noOfSeats'].dirty || f['noOfSeats'].touched)"
+          class="invalid-data">
+          Please select the number of seats</small>
+          <small class="invalid-data" *ngIf="bookEventForm.value.noOfSeats > eventDetails.availableSeats">Number of seats selected is
+            more than available seats </small>
+        </div>
+        <div *ngIf="bookEventForm.value.noOfSeats <= eventDetails.availableSeats">
+          <div *ngFor="let otherAttendee of t.controls; let i = index">
+            <div [formGroup]="otherAttendee">
+              <label>Name of Attendees #{{i+2}}</label>
+              <input class="form-control" formControlName="name" placeholder="Enter Attendee Name">
+            </div>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button class="btn btn-primary m-t-35" [routerLink]="['/list-event']">Cancel</button>
+          <button class="btn btn-success m-t-35 m-l-5"
+            (click)="submit(successTemplate,errorTemplate)">Submit</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #successTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Success!</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Booking Success for {{eventDetails.eventName}}.
+  </div>
+</ng-template>
+
+<ng-template #errorTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Failed!</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Invalid details or Something went wrong.
+  </div>
+</ng-template>
