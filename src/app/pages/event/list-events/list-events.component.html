@@ -17,14 +17,17 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
             <p>{{items.eventDate}}</p>
             <label>Seats Available:</label>
-            <p>{{eventBookings[items['_id']]?(items.totalSeats - eventBookings[items['_id']]): items.totalSeats }}</p>
+            <p>{{items.totalSeats - items.bookedCount}}</p>
 
-            <button  *ngIf="(eventBookings[items['_id']]?(items.totalSeats - eventBookings[items['_id']]): items.totalSeats)" class="btn btn-primary btn-m-b" (click)="book(items,(eventBookings[items['_id']]?(items.totalSeats - eventBookings[items['_id']]): items.totalSeats))">Book Now</button>
-            <button  *ngIf="!(eventBookings[items['_id']]?(items.totalSeats - eventBookings[items['_id']]): items.totalSeats)" class="btn btn-warning btn-m-b" [disabled]=true>Sold Out</button>
+            <button  *ngIf="(items.totalSeats - items.bookedCount)" class="btn btn-primary btn-m-b" (click)="book(items,(items.totalSeats - items.bookedCount)?(items.totalSeats - items.bookedCount): items.totalSeats)">Book Now</button>
+            <button  *ngIf="!(items.totalSeats - items.bookedCount)" class="btn btn-warning btn-m-b" [disabled]=true>Sold Out</button>
             </div>
           </div>            
             
         </div>
       </div>
     </div>
+    
   </div>
+
+  <button [routerLink]="['/create-event']" >Add</button>

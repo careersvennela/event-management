@@ -1,0 +1,39 @@
+<div class="m-t-35">
+  <h2 class="center-text">Create Event</h2>
+</div>
+
+<div class="m-t-35 m-35">
+
+  <div [formGroup]="createEventForm">
+
+    <div class="row">
+      <div class="col-6">
+        <label>Event Image:</label>
+        <input class="form-control" formControlName="eventImage" placeholder="Enter Image Url">
+
+      </div>
+      <div class="col-6">
+        <label> Event Name:</label>
+        <input class="form-control" formControlName="eventName" placeholder="Enter Event Name">
+
+      </div>
+
+      <div class="col-6">
+        <label>Event Date:</label>
+        <input class="form-control" type="date" formControlName="eventDate" placeholder="Enter Event Date">
+      </div>
+
+      <div class="col-6">
+        <label>Total Seats:</label>
+        <input class="form-control" type="number" formControlName="totalSeats" placeholder="Enter No. of Seats">
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="buttons">
+    <button class="btn btn-primary m-t-35" [routerLink]="['/list-event']">Cancel</button>
+    <button class="btn btn-success m-t-35 m-l-5" (click)="createEvent(createEventForm.value)">Create</button>
+  </div>
+</div>

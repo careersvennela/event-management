@@ -19,24 +19,6 @@ exports.create = function (req, res) {
     });
 }
 
-//To get the bookings by using event ID
-exports.getBookingsById = function (req, res) {
-    loadModel.find({eventId:req.body.eventId}, function (err, data) {
-        console.log(data)
-        if (!err) {
-            res.send({
-                success: true,
-                data
-            })
-        } else {
-            res.send({
-                success: false,
-                message: "Something went wrong. Please try after sometime"
-            })
-        }
-    });
-}
-
 //To get all bookings
 exports.getAllBookings = function (req, res) {
     loadModel.find({}, function (err, data) {

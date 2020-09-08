@@ -25,12 +25,7 @@ app.use(bodyParser.json());
 // create application/x-www-form-urlencoded parser
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
-// view engine setup
-
-app.set('view engine', 'jade');
- 
-
+app.use(cors())
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
 
@@ -39,19 +34,9 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
-app.post('/book-event', function(req, res){
-  console.log(req.body)
-  bookEventController.create(req,res)
-});
 
-app.get('/getAllBookings',function(req, res){
-  bookEventController.getAllBookings(req,res)
-})
-
-app.post('/getBookingsById',function(req, res){
-  bookEventController.getAllBookings(req,res)
-})
-
+app.use('/events', require('./routes/events'))
+app.use('/booking',require('./routes/book-event'))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -68,4 +53,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
 });
 
-module.exports = app; 
+app.listen(3000,function(){
+  console.log("port is running at "+3000)
+}) 
+//module.exports = app; 

@@ -10,30 +10,19 @@ import { EventsService } from 'src/app/events.service';
 export class ListEventsComponent implements OnInit {
 
   events = []
-  bookings = []
-  eventBookings = {}
+
   constructor(public router: Router, public eventService: EventsService) {
-    this.eventService.getEventsList().subscribe(res => {
-      this.events = res
-    })
   }
 
   ngOnInit() {
-    this.eventService.getApi('getAllBookings').subscribe(res => {
+    //To get the events list using Node JS API
+    this.eventService.getApi('events/getAllEvents').subscribe(res => {
       if (res.success) {
-        this.bookings = res.data
-        this.bookings.forEach(element => {
-          console.log(element)
-          if (this.eventBookings[element.eventId]) {
-            this.eventBookings[element.eventId] = this.eventBookings[element.eventId] + element.noOfSeats
-          }
-          else {
-            this.eventBookings[element.eventId] = element.noOfSeats
-          }
-        });
-        console.log(this.eventBookings)
+        this.events = res.finalEvents
+        console.log(this.events)
       }
     })
+
   }
 
   book(data,availableSeats) {

@@ -14,11 +14,8 @@ export class BookEventComponent implements OnInit {
 
   bookEventForm: FormGroup
   eventId: '';
-  events = []
   eventDetails = {}
   modalRef: BsModalRef;
-
-  bookingsCount = 0
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, public router: Router,
     public eventService: EventsService, private modalService: BsModalService) { }
@@ -70,7 +67,7 @@ export class BookEventComponent implements OnInit {
       this.openModal(error)
       return;
     }
-    this.eventService.postApi('book-event', this.bookEventForm.value).subscribe(res => {
+    this.eventService.postApi('booking/book-event', this.bookEventForm.value).subscribe(res => {
 
       if (res.success) {
         this.openModal(success)

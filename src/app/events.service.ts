@@ -8,16 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class EventsService {
 
-  serverUrl="/";
+  serverUrl="http://localhost:3000/";
 
   constructor(private http: HttpClient) {
-    this.getEventsList().subscribe(data => {
-      console.log(data);
-    });
-  }
-
-  public getEventsList(): Observable<any> {
-    return this.http.get("./assets/eventList.json");
   }
 
   public postApi(url,data): Observable<any> {

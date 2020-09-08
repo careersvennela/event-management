@@ -11,13 +11,16 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
 import { ListFilterPipe } from './list-filter.pipe';
+import { CreateEventComponent } from './pages/event/create-event/create-event.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ListEventsComponent,
     BookEventComponent,
-    ListFilterPipe
+    ListFilterPipe,
+    CreateEventComponent
   ],
   imports: [
     BrowserModule,
