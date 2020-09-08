@@ -6,7 +6,6 @@ var logger = require('morgan');
 var bodyParser = require('body-parser')
 var cors = require('cors')
 var mongoose=require("mongoose")
-var bookEventController = require('./controllers/book-event')
 var app = express();
 const db_url = 'mongodb+srv://anushavennela1:Anusha19@cluster0.3w7el.mongodb.net/event-management?retryWrites=true&w=majority';
 mongoose.connect(db_url, {useNewUrlParser: true },
@@ -53,7 +52,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
 });
 
-app.listen(3000,function(){
-  console.log("port is running at "+3000)
-}) 
-//module.exports = app; 
+// app.listen(3000,function(){
+//   console.log("port is running at "+3000)
+// }) 
+module.exports = app; 
