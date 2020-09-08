@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class EventsService {
 
-  serverUrl="http://localhost:3000/";
+  serverUrl="https://eventbooking4567.herokuapp.com/";
 
   constructor(private http: HttpClient) {
   }
